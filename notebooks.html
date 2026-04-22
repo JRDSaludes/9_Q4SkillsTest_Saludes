@@ -62,7 +62,7 @@ body {
 </style>
 </head>
 
-<body>
+<body onload="checkLogin()">
 
 <!-- SIDEBAR -->
 <div id="sidebar">
@@ -70,7 +70,7 @@ body {
     <a href="#">Virtual Notebooks</a>
     <a href="#">Tasks</a>
     <a href="#">Profile</a>
-    <a href="index.html">Logout</a>
+    <a href="#" onclick="logout()">Logout</a>
 </div>
 
 <!-- MAIN -->
@@ -134,7 +134,7 @@ body {
 
 <div class="row">
 
-<!-- SCIENCE (PNG) -->
+<!-- SCIENCE -->
 <div class="col-md-3">
 <div class="card">
     <div class="top science"></div>
@@ -158,7 +158,7 @@ body {
 </div>
 </div>
 
-<!-- SOCIAL (PNG) -->
+<!-- SOCIAL -->
 <div class="col-md-3">
 <div class="card">
     <div class="top social"></div>
@@ -185,6 +185,21 @@ body {
 </div>
 
 </div>
+
+<script>
+/* LOGOUT */
+function logout() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "index.html";
+}
+
+/* CHECK LOGIN (simple protection) */
+function checkLogin() {
+    if (localStorage.getItem("loggedIn") !== "yes") {
+        window.location.href = "index.html";
+    }
+}
+</script>
 
 </body>
 </html>
